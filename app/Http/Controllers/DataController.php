@@ -105,8 +105,8 @@ class DataController extends Controller
 
       $data->project_id = $request->project_id;
       $data->name = str_replace('"', "", $request->name);
-      $data->lat = $request->lat;
-      $data->lang = $request->lang;
+      // $data->lat = $request->lat;
+      // $data->lang = $request->lang;
       $data->pole_type = str_replace('"', "", $request->pole_type);
       $data->pole_construction = str_replace('"', "", $request->pole_construction);
       $data->is_trafo_input = $request->is_trafo_input;
@@ -115,6 +115,8 @@ class DataController extends Controller
         $data->transformer_power = $request->transformer_power;
         $data->fasa = $request->fasa;
       }
+
+      $data->save();
 
       PoleAttribute::where('data_id', $data->id)->delete();
       for ($i=0; $i < count($request->attribute); $i++) {

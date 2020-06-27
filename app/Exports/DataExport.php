@@ -40,7 +40,7 @@ class DataExport implements FromCollection, WithHeadings, WithMapping
             ($data->is_trafo_input == 1) ? 'Iya' : 'Tidak',
             $data->transformer_power,
             $data->fasa,
-            url($data->transformer_photo)
+            ($data->transformer_photo) ? url($data->transformer_photo) : ''
         ];
     }
 
